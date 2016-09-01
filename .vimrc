@@ -13,8 +13,9 @@ if v:version > 700
 
     if has('vim_starting')
       set runtimepath+=~/.vim/bundle/neobundle.vim
-      call neobundle#rc(expand('~/.vim/bundle'))
     endif
+
+    call neobundle#begin(expand('~/.vim/bundle'))
 
     " let NeoBundle manage NeoBundle
      NeoBundle 'Shougo/neobundle.vim'
@@ -82,9 +83,11 @@ if v:version > 700
     "NeoBundle 'vim-scripts/rest.vim'
     "NeoBundle 'Rykka/riv.vim'
 
+    "NeoBundle 'mattn/benchvimrc-vim'
     " github 以外のリポジトリ ------------------------------------------------
     "Bundle 'git://git.wincent.com/command-t.git'
-    NeoBundle 'git://github.com/mattn/benchvimrc-vim.git'
+
+    call neobundle#end()
 
     filetype plugin indent on
 
