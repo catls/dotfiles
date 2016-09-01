@@ -1,0 +1,78 @@
+
+# {{{ chpwd
+
+# yonchu/chpwd_for_zsh.sh
+# https://gist.github.com/3935922.git
+ls_abbrev() {
+    # -a : Do not ignore entries starting with ..
+    # -C : Force multi-column output.
+    # -F : Append indicator (one of */=>@|) to entries.
+    local cmd_ls='ls'
+    local -a opt_ls
+    opt_ls=('-C' '--color=always')
+    case "${OSTYPE}" in
+        freebsd*|darwin*)
+            if type gls > /dev/null 2>&1; then
+                cmd_ls='gls'
+            else
+                # -G : Enable colorized output.
+                opt_ls=('-CG')
+            fi
+            ;;
+    esac
+
+    local ls_result
+    ls_result=$(CLICOLOR_FORCE=1 COLUMNS=$COLUMNS command $cmd_ls ${opt_ls[@]} | sed $'/^\e\[[0-9;]*m$/d')
+
+    local ls_lines=$(echo "$ls_result" | wc -l | tr -d ' ')
+
+    if [ $ls_lines -gt 10 ]; then
+        echo "$ls_result" | head -n 5
+        echo '...'
+        echo "$ls_result" | tail -n 5
+        echo "$(command ls -1 -A | wc -l | tr -d ' ') files exist"
+    else
+        echo "$ls_result"
+    fi
+}
+
+chpwd_1() {
+    echo ${green}`pwd`${attr_end}
+    ls_abbrev
+    tree -C -L 2 -a > /tmp/pwd_tree
+}
+
+add-zsh-hook chpwd chpwd_1
+
+# }}}
+
+# {{{ preexec
+preexec_1() {
+    if [ -n "$TMUX" ];then
+        mycmd=(${(s: :)${1}})
+        #echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):$mycmd[1]\e\\"
+        echo -ne "\ek$mycmd[1]\e\\"
+    fi
+}
+add-zsh-hook preexec preexec_1
+
+# }}}
+
+# {{{ precmd
+precmd_1() {
+    if [ -n "$TMUX" ];then
+        echo -ne "\ekzsh\e\\"
+#        tmux set-option -g status-right "#[fg=cyan,bg=black] \"$PWD\" :#(tmux display -p \"#I-#P\") " > /dev/null
+    fi
+}
+add-zsh-hook precmd  precmd_1
+
+tmux_vim_preexec() {
+    local command=$1
+    if [[ "$command" = *vim* ]]; then
+        tmux setenv TMUX_VIM_CMD_$(tmux display -p "#I") $command
+    fi
+}
+# add-zsh-hook preexec tmux_vim_preexec
+
+# }}}

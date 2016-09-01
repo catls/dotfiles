@@ -1,0 +1,420 @@
+############# alias ######################################################
+alias rm > /dev/null 2>&1 && unalias rm   # hatefull alias 'rm -i'
+alias mv > /dev/null 2>&1 && unalias mv
+alias cp > /dev/null 2>&1 && unalias cp
+
+alias sudo='sudo ' # sudoのalias引継ぎ
+alias sl='ls'
+case "${OSTYPE}" in
+    freebsd*|darwin*)
+        alias ls='ls -G -w'
+        ;;
+    linux*)
+        alias ls='ls --color=auto'
+        ;;
+esac
+alias lsc='\ls -1 | wc -l'
+alias b='cd ..'
+alias bb='cd ../../'
+alias bbb='cd ../../../'
+alias cdd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
+alias cdl='cd ~/lib'
+alias cdb='cd ~/bin'
+alias cp='cp -v'
+alias mv='mv -v'
+alias rr='rm -fr'
+alias rv='rm -vfr'
+alias md='mkdir -p'
+alias rd='rmdir'
+alias rdr='find . -type d -empty -delete'
+alias du='du -h'
+alias bc='bc -q'
+alias dentaku='bc' # stupid but needed
+
+#alias eject="eject -v /dev/sr0 "
+#alias retract="eject -t -v /dev/sr0 "
+
+alias vuser="fuser -v "
+alias umount-check="fuser -mv"
+
+alias ping="ping -c 5"
+alias cal="cal -m"
+
+#alias sd='sudo shutdown -h now'
+#alias sdfsck='sudo shutdown -r -F now'
+#alias reboot='sudo reboot'
+alias grep='grep --color=auto'
+alias grepc='grep --color=always'
+alias less='less -R'
+alias gv='gvim --remote-tab-silent'
+alias gvp='gvim -p'
+alias mc='mcomix'
+alias mp='mplayer -vf screenshot'
+alias mps='mplayer  -vf screenshot -shuffle'
+alias upmem="ps -eo pmem,pcpu,rss,vsize,args | sort -k 1"
+alias last='last -adn 10'
+alias getip='curl ifconfig.me/ip'
+alias gethost='curl ifconfig.me/host'
+alias ex='extract'
+alias watch='watch --differences=cumulative'
+alias xclock="xclock -xrm '*overrideRedirect: True' -geometry 200x200+1070+20"
+alias psu='ps -fu $USER'
+alias zipr='zip -r'
+alias tree='tree -N'
+
+alias ff="firefox -P $(users)"
+alias tb="thunderbird -P $(users)"
+alias sc='soundconverter &'
+alias ms='mscore &'
+alias cr='chromium'
+alias mov='mplayer -shuffle **/*(*.avi|*.wmv|*.mp4|*.rmvb|*.mpg|*.mkv|*.asf)'
+alias getprop="xprop | sed -n '/^WM_CLASS/s/.* = \"\(.*\)\", \"\(.*\)\"/instance: \1\nclass: \2/p;/^WM_NAME/s/.* = \"\(.*\)\"/title: \1/p'"
+alias mddate='mkdir `LC_ALL=C date +"%m%d"`'
+alias mddate_%a='mkdir `LC_ALL=C date +"%m%d_%a"`'
+alias xr='killall xmobar;xmonad --restart'
+alias phpunit='phpunit --colors'
+
+# ls++
+# TODO
+# perl 5.18 では動かない
+perl_version=$(perl -v | awk '/This/ {print $4}' | sed -e 's/v//')
+if [ -x '/usr/bin/vendor_perl/ls++' ];then
+    alias ls++='ls++ --potsf'
+    alias ll='ls++ -l'
+    alias la='ls++ -a'
+    alias l.='ls++ -ld .[^.]*'
+    alias ld='ls++ -ld *(-/DN)'
+    alias ld.='ls++ -ld *(-/DN)'
+else
+    alias ll='ls -l'
+    alias la='ll -a'
+    alias l.='ls -ld .[^.]*'
+    alias ld='ls -ld *(-/DN)'
+    alias ld.='ls -ld .*(-/DN)'
+fi
+
+# color df
+if [ $(which dfc 2> /dev/null) ];then
+    alias df='dfc -Td'
+else
+    alias df='df -hT'
+fi
+
+# color diff
+if [ $(which colordiff 2> /dev/null) ];then
+    alias diff='colordiff -u --strip-trailing-cr'
+fi
+
+# color top
+if [ $(which htop 2> /dev/null) ];then
+    alias top='htop'
+fi
+
+# tmux
+alias tm='tmux'
+alias tml='tmux list-sessions'
+tma(){
+    if [ -z $1 ];then
+        tmux attach
+    else
+        tmux attach -t $1
+    fi
+}
+tmad(){
+    if [ -z $1 ];then
+        tmux attach
+    else
+        tmux attach -d -t $1
+    fi
+}
+
+
+# # color cat
+# if [ $(which pygmentize 2> /dev/null) ];then
+#     alias cat='pygmentize -f terminal -g'
+# fi
+safety_cat(){
+    local max=100000
+    local size=`\du -b "$1" | cut -f 1`
+    if [ $max -le $size ];then
+        echo "$1 is large ($size byte)"
+    else
+        \cat $1
+    fi
+}
+alias cat="safety_cat"
+
+
+# # color tailf
+# tailf-color(){
+#     \tailf $1 | \
+#     sed -e 's/\(.*INFO.*\)/\o033[32m\1\o033[39m/' \
+#         -e 's/\(.*SEVERE.*\)/\o033[31m\1\o033[39m/' \
+# }
+# alias tailf="tailf-color"
+
+# nkf
+alias enc='nkf --guess'
+alias enc.iso-2022-JP='nkf -j --overwrite'
+alias enc.UTF8='nkf -w --overwrite'
+alias enc.EUC='nkf -e --overwrite'
+alias enc.SJIS='nkf -s --overwrite'
+alias enc.Lu='nkf -Lu --overwrite'
+alias enc.Lw='nkf -Lw --overwrite'
+
+# dstat
+if [ $(which dstat 2> /dev/null) ];then
+    if [ ! -z "`dstat -h | grep 'enable io stats'`" ];then
+        alias dstat-full='dstat -Tclmdrn'
+        alias dstat-mem='dstat -Tclm'
+        alias dstat-cpu='dstat -Tclr'
+        alias dstat-net='dstat -Tclnd'
+        alias dstat-disk='dstat -Tcldr'
+        alias dstat-io='dstat -ta --top-io-adv --top-bio-adv'
+    else
+        alias dstat-full='dstat -Tclmdn'
+        alias dstat-mem='dstat -Tclm'
+        alias dstat-cpu='dstat -Tcl'
+        alias dstat-net='dstat -Tclnd'
+        alias dstat-disk='dstat -Tcld'
+    fi
+fi
+
+# git
+alias -g g.='git'
+
+# status
+alias g.st='git status --short --branch'
+
+# add
+alias g.a='git add'
+alias g.au='git add -u'
+alias g.aA='git add -A'
+alias g.ap='git add -p'
+
+# mv
+alias g.mv='git mv -v'
+
+# rm
+alias g.rm='git rm -v'
+alias g.rmc='git rm --cached'
+
+# tag
+alias g.t='git tag'
+
+# reset
+alias g.re='git reset HEAD --'
+alias g.reh='git reset --hard'
+alias g.res='git reset --soft'
+
+alias g.fsckgc='git fsck --full && git gc'
+
+# config
+alias g.c='git config'
+alias g.cl='git config --list'
+
+# branch
+alias g.b='git branch'
+alias g.ba='git branch -a'
+alias g.br='git branch -r'
+alias g.bd='git branch -d'
+alias g.bD='git branch -D'
+
+# checkout
+alias g.co='git checkout'
+alias g.cob='git checkout -b'
+
+# clone
+alias g.cl='git clone'
+
+# diff
+alias g.d='git diff --ignore-space-change'
+alias g.dc='git diff --cached'
+alias g.dH='git diff HEAD'
+alias g.dw='git diff --word-diff=color'
+
+# show
+alias g.s='git status'
+alias g.show='git show'
+
+# commit
+alias g.ci='git commit -v'
+alias g.cim='git commit -v --amend'
+
+# git fetch
+alias g.f='git fetch'
+
+# merge
+alias g.m='git merge --no-ff'
+alias g.mnff='git merge --no-ff'
+alias g.mff='git merge --ff'
+
+# pull
+alias g.pl='git pull --ff-only'
+alias g.pl.nff='git pull --no-ff'
+alias g.pl.ff='git pull --ff'
+alias g.ps='git push'
+
+g.ps-all(){
+    branch=$(git branch -a 2>/dev/null | grep "^*" | tr -d '\* ')
+
+    r=`git remote -v | grep push`
+    for remote in `echo $r | awk '{ print $1 }'`;do
+        echo "git push $remote $branch $@"
+        git push $remote $branch $@
+    done
+}
+g.delete-remote-branch(){
+    branch=$1
+    b=`git branch -a | grep -v origin`
+    for branch in `echo $b | awk '{ print $1 }'`;do
+        echo "git push $remote :$branch"
+        git push $remote :$branch
+    done
+}
+g.delete-remote-branch-push(){
+    branch=$1
+    r=`git remote -v | grep push`
+    for remote in `echo $r | awk '{ print $1 }'`;do
+        echo "git push $remote :$branch"
+        git push $remote :$branch
+    done
+}
+
+alias g.l='git log --stat --summary'
+alias g.lg="git log --graph --date=short --pretty='%C(yellow)%h%Creset %C(cyan bold)%d%Creset %s %Cgreen[%cd]%Creset' --decorate --all"
+alias g.subupd='git submodule foreach "git checkout master; git pull" && cd $(git rev-parse --show-toplevel) && git submodule update && cd -'
+
+# tig
+alias t.s='tig status'
+alias t.show='tig show'
+alias t.b='tig blame'
+
+# for archlinux
+if [[ `uname -r` =~ ARCH$ ]]; then
+    alias pkg-update='sudo etckeeper pre-install && sudo pacman -Syu && sudo etckeeper post-install'
+    # package management
+    alias pac="pacman"
+    alias spac="sudo pacman"
+    alias spacv="nitrogen --set-auto ~/Document/Pictures/black.jpg;sudo pacdiffviewer;nitrogen --restore"
+
+    # pacman update
+    alias pSyu="spac -Syu"         # pacman upgrade
+    alias pS="spac -S"             # pacman install
+    alias pU="spac -U"             # makepkg install
+    alias pSd="spac -S --asdeps"   # install as deps
+    # pacman search
+    alias pSl="pacman -Sl"         # list all packages of a repository
+    alias pQqm="pacman -Qqm"       # list all packages which were locally installed (e.g. AUR packages)
+    alias pQs="pac -Qs"            # query search
+    alias pQi="pac -Qi"            # query info
+    alias pSs="pac -Ss"            # sync search
+    alias pSi="pac -Si"            # sync info
+    # query listings
+    alias pQl="pac -Ql"            # list files
+    alias pQo="pac -Qo"            # check ownership
+    # aur update
+    alias ySya="sudo yaourt -Syua" # aur upgrade
+    alias yS="sudo yaourt -S"      # aur install
+    alias yU="sudo yaourt -U"      # aur update
+    # aur search
+    alias ySs="yaourt -Ss"         # aur search
+    alias ySi="yaourt -i"          # aur info
+    # remove pkgs
+    alias pRsn="spac -Rsn"         # clean 'n purge
+    alias pQqdt="pac -Qqdt"        # unrequired deps
+    alias pSc="pacman -Sc"         # clean cache - delete all not currently installed package files
+    ## AUR makepkg
+    alias mki="makepkg -csirf"
+    alias mkg="makepkg -g"
+    alias mks="makepkg --source -f"
+    alias pacm="makepkg -fci"      # '[m]ake' - make package from PKGBUILD file in current directory
+fi
+
+# 一文字alias
+alias a='alias'
+alias c='clear' # ctr+l
+alias d='dirs -v'
+alias h='fc -li'
+alias j='jobs -l'
+alias m="mirage-random &"
+alias p='popd > /dev/null && cd .'
+alias pp='pushd > /dev/null'
+alias q='exit'
+alias :q='exit'
+alias t="feh -E 200 -y 200 -i (*.jpg|*.png|*.gif|*.jpeg|*.bmp)"
+alias x='startx >& ~/x.err'
+
+# alias -g
+alias -g A='&&'
+alias -g C='| wc -l'
+alias -g L='| $PAGER -c'
+alias -g M='| $PAGER -c'
+alias -g N='> /dev/null'
+alias -g 2N='2> /dev/null'
+alias -g N2N='> /dev/null 2>&1'
+alias -g G='| grep'
+alias -g NG='noglob'
+alias -g LC='LANG=C'
+alias -g Y='yes y |'
+alias -g X='-print0 | xargs -0'
+W(){ watch --differences=cumulative "$@" }
+pwd_tree(){
+    while [ 1 ]; do clear;cat /tmp/pwd_tree; sleep 1; done
+}
+
+# pager mysql
+mysqll(){
+    local mysql_pager
+    if [ $(which grcat 2> /dev/null ) ] && [ -f "$HOME/.grc/conf.mysql" ] ;then
+        mysql_pager="grcat $HOME/.grc/conf.mysql | less -iMSx4 -FX -R"
+    else
+        mysql_pager="less -S-n -i -F -X"
+    fi
+    mysql $@ --pager=$mysql_pager
+}
+# onliner sql
+function SELECT () {
+    mysql -u root -e "SET NAMES utf8; SELECT $*"
+}
+function SHOW () {
+    mysql -u root -e "SET NAMES utf8; SHOW $*"
+}
+alias SELECT="noglob SELECT"
+alias SHOW="noglob SHOW"
+
+alias -g psg='ps aux | grep'
+alias -g lsg='ls -al | grep'
+alias -g hg='history 1 | grep' # not Mercurial
+alias -g Aq='&& exit'          # mistype 'A q'
+
+#alias -g CL=" | xsel -i --clipboard"                       # stdout => clip
+#alias -g CL=" 2>&1 | xsel -i --clipboard"                  # stdout + stderr => clip
+#alias -g CL=" | (cat 1>&2 | xsel -i --clipboard) 2>&1"     # stdout => clip and stdout
+alias -g CL=" 2>&1 | (cat 1>&2 | xsel -i --clipboard) 2>&1" # stdout, stderr => clip and stdout
+
+# alias -s
+# alias -s php=php
+# alias -s pl=perl
+# alias -s cgi=perl
+# alias -s tpl=gvim
+# alias -s skin=gvim
+alias -s xls=libreoffice
+alias -s doc=libreoffice
+alias -s odt=libreoffice
+alias -s pdf=epdfview
+alias -s {png,jpg,bmp,tif,PNG,JPG,BMP,TIF}=mirage
+alias -s {avi,wmv,mp4,rmvb}=mplayer
+alias -s midi=timidity
+alias -s md=retext
+
+# 設定ファイル類
+alias reload='source ~/.zshenv && source ~/.zshrc && source ~/.zprofile'
+alias zshrc='vi ~/.zshrc && source ~/.zshrc && zcompile ~/.zshrc'
+alias tmux.conf='vi ~/.tmux.conf && tmux source-file ~/.tmux.conf'
+alias vimrc='vi ~/.vimrc'
+alias gvimrc='vi ~/.vimrc'
+alias xmonad.hs='vi ~/.xmonad/xmonad.hs && xmonad --recompile && xmonad --restart'
+alias xmobarrc='vi ~/.xmobarrc && killall xmobar;xmobar &'
+
+# vmstat -n 3 10 | awk '{ print strftime("%Y/%m/%d %H:%M:%S"), $0 }'

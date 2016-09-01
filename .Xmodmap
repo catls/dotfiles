@@ -1,0 +1,13 @@
+! 参考
+! http://www.fail2fail.com/archives/2012/03.html
+!
+! xmodmap -pm で現在設定されているメタキーを確認できる
+! xevコマンドでkey codeを確認できる
+!
+!! caps-lock into Win key
+! clear mod4
+! keycode 66 = Super_L
+! clear lock
+! add Mod4 = Super_L
+
+! 各設定はホスト別ファイルに移動

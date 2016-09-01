@@ -1,0 +1,24 @@
+# 個人用設定ファイル類
+/.private/*
+!/.private/.gitkeep
+
+# w3m
+/.w3m/*
+!/.w3m/bookmark.html
+!/.w3m/config
+!/.w3m/keymap
+
+# xmonad
+xmonad.errors
+xmonad.hi
+xmonad.o
+xmonad-i386-linux
+xmonad-x86_64-linux
+*.swp
+
+# vim
+.vim/bundle
+.netrwhist
+
+# zsh
+.zsh/.zcompdump

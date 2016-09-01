@@ -1,0 +1,20 @@
+Config { --font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+        font = "xft:Sans-9:bold"
+       , bgColor = "black"
+       , fgColor = "grey"
+       --, position = Top
+       , position = Static { xpos = 0 , ypos = 0, width = 1800, height = 19 }
+       , lowerOnStart = True
+       , commands = [ Run Network "enp4s0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Date "%Y/%m/%d %a %k:%M" "date" 10
+                    , Run Com ".xmonad/check-game_time.php" [""] "game" 10
+                    , Run Com ".xmonad/check-weather.php" [""] "weather" 36000
+                    , Run Com ".xmonad/check-gmail.sh" [""] "mail" 3600 ]
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%cpu% | %memory% | %enp4s0% | %game%}{ %mail% | %weather% | <fc=#ee9a00>%date%</fc> "
+       }
+

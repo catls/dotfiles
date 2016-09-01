@@ -1,0 +1,75 @@
+set ftp:use-mdtm no
+set ftp:timezone -9
+#set ftp:passive-mode off
+set ftp:ssl-allow off
+
+set xfer:clobber on
+set xfer:log on
+set xfer:log-file /var/log/local/transfer_log
+
+set ssl:verify-certificate no
+
+set bmk:save-passwords 1
+
+set dns:fatal-timeout 10
+set net:timeout 10
+
+set net:max-retries 30
+set net:reconnect-interval-base 2
+set net:reconnect-interval-max 5
+
+set pget:default-n 5
+set mirror:use-pget-n 5
+# PHP Sessionファイルはダウンロードしない
+set mirror:exclude-regex sess_.*
+# 空のディレクトリもダウンロードする
+set mirror:no-empty-dirs false
+# parallelモードの場合、並列に複数のディレクトリの処理をする
+set mirror:parallel-directories true
+# specifies number of parallel transfers mirror is allowed to start. Default is 1.
+set mirror:parallel-transfer-count 3
+
+#set cmd:fail-exit yes
+
+# cmd:prompt (string)
+#        The prompt. lftp recognizes the following backslash-escaped special characters that are decoded as follows:
+#        \@     insert @ if current user is not default
+#        \a     an ASCII bell character (07)
+#        \e     an ASCII escape character (033)
+#        \h     the hostname you are connected to
+#        \n     newline
+#        \s     the name of the client (lftp)
+#        \S     current slot name
+#        \u     the username of the user you are logged in as
+#        \U     the URL of the remote site (e.g., ftp://g437.ub.gu.se/home/james/src/lftp)
+#        \v     the version of lftp (e.g., 2.0.3)
+#        \w     the current working directory at the remote site
+#        \W     the base name of the current working directory at the remote site
+#        \nnn   the character corresponding to the octal number nnn
+#        \\     a backslash
+#        \?     skips next character if previous substitution was empty.
+#        \[     begin a sequence of non-printing characters, which could be used to embed a terminal control sequence into the prompt
+#        \]     end a sequence of non-printing characters
+#
+# make prompt look better
+# set cmd:prompt "lftp \S\? \u\@\h:\w> "
+set cmd:prompt "\
+\[\e[0;33m\][ftp]\[\e[0m\] \
+\[\e[38;5;248m\]\h:\
+\[\e[0;36m\]\w\[\e[0m\]\
+\[\e[38;5;248m\]> "
+
+alias ll ls
+alias ld 'ls -F | grep /$'
+# relsがある
+alias rls 'reconnect && ls'
+alias q exit
+alias b 'cd .. && ls'
+alias c '!clear'
+alias cdw 'eval -f "cd $0 && lcd $0"'
+alias bak 'eval -f "get $0 -o $0.bak"'
+alias gvim '!gvim --remote-tab-silent'
+alias gv gvim
+alias mirror 'mirror -v -c --use-pget-n=5 --parallel'
+alias ch 'ls -al | grep "\ 0\ "'
+alias p pget -c -n 10

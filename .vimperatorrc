@@ -1,0 +1,159 @@
+" vim: set ft=vimperator:
+
+"+----------------------------------------------------------------------------------------+
+" 基本設定
+"+----------------------------------------------------------------------------------------+
+"カラー
+colorscheme sweets_custom
+
+"履歴やブックマークからの補完
+set complete=tl
+
+"ブラウザタイトルの変更
+set titlestring=Firefox
+
+"ページ全体で検索語を強調表示
+set hlsearch
+
+"フォームにフォーカスされないようにする
+set focuscontent
+
+"ビープ音を鳴らさずビジュアルベルを使用
+set visualbell
+
+"ヒントモードでアルファベットを使う
+set hintchars=ifjklasdhguonmerwc
+
+"右側にスクロールバーを非表示
+set noscrollbars
+
+"メニュー/ツール/リンク/ブックマークを表示（ブックマークのみ）
+set gui=noaddons,nobookmarks,nomenu,nonavigation,tabs
+
+"<S-PageDown>/<S-PageUp>で表示メニューの表示/非表示
+map <S-PageDown> :set gui=all<CR>
+map <S-PageUp> :set gui=addons,nobookmarks,nomenu,nonavigation,tabs<CR>
+
+"+----------------------------------------------------------------------------------------+
+" キーマップ設定
+"+----------------------------------------------------------------------------------------+
+
+"yで選択範囲をコピー
+map y :echo 'Yank!'<CR>Y
+
+"j/kの移動量を5倍に
+"map j 5<C-e>
+"map k 5<C-y>
+
+"<BS>で「戻る」
+map <BS> H
+
+"h/lでタブ移動
+map h <C-p>
+map l <C-n>
+
+"qでタブをロック
+map q :protect<CR>
+
+"<S-q>でその他のタブを閉じる
+map <S-q> :tabonly<CR>
+
+"<S-Left>/<S-Right>で現在のタブの位置変更
+map <S-Left>  :tabmove! -1<CR>
+map <S-Right> :tabmove! +1<CR>
+
+"<S-r>ですべてのタブを再読み込み
+map <S-r> :reloadall<CR>
+
+"+----------------------------------------------------------------------------------------+
+" プラグイン設定
+"+----------------------------------------------------------------------------------------+
+
+"<F1>でpixivの画像を保存
+map <F1> :js AnkPixiv.downloadCurrentImage()<CR>
+
+
+"ldrize中でも<S-j>/<S-k>で標準の移動が出来るように
+map <S-j> 15<C-e>
+map <S-k> 15<C-y>
+
+
+" feedsomekeys_3"
+command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r <S-i>  a # [ ] ? gi gs gt gd ga gc
+lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
+lazy fmaps -u='feedly\.com' j k n p o v gm ga gg gl / r m x s t l f b
+lazy fmaps -e=vkeydown -u='www\.tumblr\.com/' j k r t q p n L l<CR>
+lazy fmaps -u='www\.pixiv\.net/.*' -events=vkeydown j k o p
+"  
+"  
+"  
+map P ;P
+"  
+"  "***********ステータスライン周りのカスタマイズ********************************************
+"  "*****   http://d.hatena.ne.jp/k_hanazuki/20110310/1299749396   **************************
+"  
+"  javascript <<JS
+"  let statusLine = document.getElementById("liberator-statusline");
+"  let bottomBar = document.getElementById("liberator-bottombar");
+"  
+"  // ステータスラインに戻る/進むを表示
+"  if(!document.getElementById("history-indicators")) {
+"    let xml = <hbox id="history-indicators" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+"      <label value="&lt;" id="back-indicator" class="history-indicator">
+"        <observes element={document.getElementById("back-button").command} attribute="disabled" />
+"      </label>
+"      <label value="&gt;" id="forward-indicator" class="history-indicator">
+"        <observes element={document.getElementById("forward-button").command} attribute="disabled" />
+"      </label>
+"    </hbox>;
+"  
+"    statusLine.appendChild(document.adoptNode(new DOMParser().parseFromString(xml.toXMLString(), "application/xml").documentElement, true));
+"  }
+"  
+"  // ステータスバーにブックマークアイコンを移動
+"  let (statusBar = document.getElementById("status-bar")) {
+"    let (id = "star-button") {
+"      if(!document.getElementById("panel-" + id)) {
+"        let panel = document.createElement("statusbarpanel");
+"        panel.setAttribute("id", "panel-" + id);
+"        let (icon = document.getElementById(id)) {
+"          icon.setAttribute("class", "");
+"          panel.appendChild(icon);
+"        }
+"        statusBar.insertBefore(panel, statusBar.firstChild);
+"      }
+"    }
+"  }
+"  
+"  // ステータスラインの横にステータスバーを移動
+"  let (statusBar = document.getElementById("status-bar")) {
+"    statusBar.style.maxHeight = "20px";
+"    bottomBar.appendChild(statusBar);
+"  }
+"  
+"  // ステータスラインにfaviconを移動
+"  let (favicon = document.getElementById("page-proxy-stack")) {
+"    favicon.style.maxWidth = favicon.style.maxHeight = "20px"
+"    statusLine.insertBefore(favicon, statusLine.firstChild);
+"  }
+"  JS
+"  
+"  style -name history-indicators chrome://browser/content/browser.xul <<CSS
+"    #history-indicators {
+"      padding: 0 ! important;
+"    }
+"    .history-indicator {
+"      margin: 0 1px ! important;
+"      color: WindowText;
+"    }
+"    .history-indicator[disabled="true"] {
+"      //visibility: hidden;
+"    }
+"  CSS
+"  
+"  "*********************　ステータスライン ここまで　************************************
+"  
+"  
+" ローカル設定読み込み
+source! ~/.private/private.vimperatorrc

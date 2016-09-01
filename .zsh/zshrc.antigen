@@ -1,0 +1,30 @@
+source ${HOME}/.zsh/antigen/antigen.zsh
+
+# Bundles from the default repo
+#antigen-bundle git
+#antigen-bundle autojunp
+#antigen-bundle heroku
+#antigen-bundle pip
+#antigen-bundle lein
+#antigen-bundle command-not-found
+antigen-bundle systemd
+antigen-bundle symfony2
+ 
+# Syntax highlighting bundle.
+antigen-bundle zsh-users/zsh-syntax-highlighting
+
+# # Load the theme.
+# antigen-theme robbyrussell
+
+# # Tell antigen that you're done.
+antigen-apply
+
+
+
+# zsh-syntax-highlighting
+ZSH_HIGHLIGHT_STYLES[function]='fg=cyan,underline'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan,underline'
+ZSH_HIGHLIGHT_STYLES[command]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[path]='fg=green'
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=yellow'

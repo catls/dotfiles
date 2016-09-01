@@ -1,0 +1,59 @@
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
+URxvt.termName: rxvt-256color
+URxvt.scrollBar: false
+
+urxvt.font: xft:M+2VM+IPAG circle:size=10:antialias=true,xft:M+2VM+IPAG circle:size=10:antialias=true
+URxvt.lineSpace: 2
+URxvt.transparent: true
+URxvt.inheritPixmap: true
+URxvt.shading: 20
+URxvt.depth: 32
+URxvt.saveLines: 20000
+
+! Extensions
+URxvt*perl-lib:         /usr/lib/urxvt/perl/
+URxvt*perl-ext-common:  default,matcher,searchable-scrollback
+!URxvt*urlLauncher:      /usr/bin/firefox
+URxvt*urlLauncher:      /usr/bin/w3m
+URxvt*matcher.button:   1
+
+!URxvt.background: #001111
+URxvt.foreground: #DFDFDF
+URxvt.background: #000000
+URxvt.cursorColor: #99CCE6
+URxvt.cursorColor2: #000000
+
+
+!black
+!URxvt.color0:
+!URxvt.color8:
+
+!red
+URxvt.color1: #CE4E4E
+URxvt.color9: #E68686
+
+!green
+URxvt.color2: #409090
+URxvt.color10: #66CC66
+
+!yellow
+URxvt.color3: #CD9829
+URxvt.color11: #F0AD6B
+
+!blue
+URxvt.color4: #6E6EAF
+URxvt.color12: #808BED
+
+!magenta
+URxvt.color5: #C090D0
+URxvt.color13: #CC6FCC
+
+!cyan
+URxvt.color6: #99CCE6
+URxvt.color14: #5ACCCC
+
+!white
+!URxvt.color7:
+!URxvt.color15:
+
