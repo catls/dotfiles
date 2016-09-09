@@ -409,8 +409,8 @@ alias -s midi=timidity
 alias -s md=retext
 
 # 設定ファイル類
-alias reload='source ~/.zshenv && source ~/.zshrc && source ~/.zprofile'
-alias zshrc='vi ~/.zshrc && source ~/.zshrc && zcompile ~/.zshrc'
+alias reload='source ~/.zshenv && source ~/.zsh/.zshrc && source ~/.zprofile'
+alias zshrc="vi ~/.zshrc && source ${ZDOTDIR}/.zshrc.aliase && zcompile ${ZDOTDIR}/.zshrc"
 alias tmux.conf='vi ~/.tmux.conf && tmux source-file ~/.tmux.conf'
 alias vimrc='vi ~/.vimrc'
 alias gvimrc='vi ~/.vimrc'
@@ -418,3 +418,6 @@ alias xmonad.hs='vi ~/.xmonad/xmonad.hs && xmonad --recompile && xmonad --restar
 alias xmobarrc='vi ~/.xmobarrc && killall xmobar;xmobar &'
 
 # vmstat -n 3 10 | awk '{ print strftime("%Y/%m/%d %H:%M:%S"), $0 }'
+
+# zcompdump
+alias reload-shell="rm ${ZDOTDIR}/.zcompdump && exec $SHELL -l"
