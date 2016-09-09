@@ -15,6 +15,7 @@ FILE_LIST=(
     .tmux.conf
     .vimrc
     .zshenv
+    .gitconfig
     # .lftprc
     # .asoundrc
     # .ls++.conf

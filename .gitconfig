@@ -1,17 +1,16 @@
 [color]
-	ui = always
-	branch = always
-	diff = always
-	interactive = always
-	status = always
-	grep = always
-	pager = true
-	decorate = always
-	showbranch = always
-[user]
-	email = naoki.fujiki@sega.com
-	name = fujiki_naoki
+        ui = always
+        branch = always
+        diff = always
+        interactive = always
+        status = always
+        grep = always
+        pager = true
+        decorate = always
+        showbranch = always
 [grep]
-	lineNumber = true
+        lineNumber = true
 [log]
-	decorate = full
+        decorate = full
+[include]
+        path = ~/.private/private.gitconfig
