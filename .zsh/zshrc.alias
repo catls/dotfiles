@@ -409,7 +409,7 @@ alias -s midi=timidity
 alias -s md=retext
 
 # 設定ファイル類
-alias reload='source ~/.zshenv && source ~/.zsh/.zshrc && source ~/.zprofile'
+alias reload="source ~/.zshenv && source ${ZDOTDIR}/.zshrc && source ${ZDOTDIR}/.zprofile"
 alias zshrc="vi ~/.zshrc && source ${ZDOTDIR}/.zshrc.aliase && zcompile ${ZDOTDIR}/.zshrc"
 alias tmux.conf='vi ~/.tmux.conf && tmux source-file ~/.tmux.conf'
 alias vimrc='vi ~/.vimrc'
