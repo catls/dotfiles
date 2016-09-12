@@ -186,46 +186,23 @@ setopt extended_glob        # ファイル名で #, ~, ^ の 3 文字を正規�
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
 
-# bindkey
-if [ -f ${HOME}/.zsh/zshrc.bindkey ]; then
-    source ${HOME}/.zsh/zshrc.bindkey
-fi
+zsh_files=(
+    'zshrc'
+    'bindkey'
+    'alias'
+    'functions'
+    'antigen'
+    'prompt'
+    'hooks'
+    'completion'
+)
+for file in ${zsh_files[@]}; do
+    if [ -f ${ZDOTDIR}zshrc.${file} ]; then
+        source ${ZDOTDIR}zshrc.${file}
+    fi
 
-# alias
-if [ -f ${HOME}/.zsh/zshrc.alias ]; then
-    source ${HOME}/.zsh/zshrc.alias
-fi
-
-# functions
-if [ -f ${HOME}/.zsh/zshrc.functions ]; then
-    source ${HOME}/.zsh/zshrc.functions
-fi
-
-# antigen
-if [ -f ${HOME}/.zsh/antigen/antigen.zsh ]; then
-    source ${HOME}/.zsh/zshrc.antigen
-fi
-
-# prompt
-if [ -f ${HOME}/.zsh/zshrc.prompt ]; then
-    source ${HOME}/.zsh/zshrc.prompt
-fi
-
-# hooks
-if [ -f ${HOME}/.zsh/zshrc.hooks ]; then
-    source ${HOME}/.zsh/zshrc.hooks
-fi
-
-# completion
-if [ -f ${HOME}/.zsh/zshrc.completion ]; then
-    source ${HOME}/.zsh/zshrc.completion
-fi
-
-# ローカルzshrcの読み込み
-if [ -f ${HOME}/.private/private.zshrc ]; then
-    source ${HOME}/.private/private.zshrc
-fi
-
-if [ -f ${HOME}/.private/private.zshrc.bindkey ]; then
-    source ${HOME}/.private/private.zshrc.bindkey
-fi
+    # ローカルzshrcの読み込み
+    if [ -f ${HOME}/.private/private.${file} ]; then
+        source ${HOME}/.private/private.${file}
+    fi
+done
