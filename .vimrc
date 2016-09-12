@@ -5,7 +5,7 @@ if v:version > 700
 
     if !isdirectory(expand("~/.vim/bundle/neobundle.vim"))
         !mkdir -p ~/.vim/bundle
-        !git clone git://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
+        !git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
         let s:bootstrap=1
     elseif !isdirectory(expand("~/.vim/bundle/vimdoc-ja"))
         let s:bootstrap=1
