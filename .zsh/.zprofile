@@ -35,6 +35,7 @@ path=(
 
     # PHP
     $HOME/.composer/vendor/bin(N-/)
+    $HOME/.config/composer/bin(N-/)
     $HOME/.phpenv/bin(N-/)
 
     # cabal
