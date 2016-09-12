@@ -186,6 +186,10 @@ setopt extended_glob        # ファイル名で #, ~, ^ の 3 文字を正規�
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
 
+# bindkey
+if [ -f ${HOME}/.zsh/zshrc.bindkey ]; then
+    source ${HOME}/.zsh/zshrc.bindkey
+fi
 
 # alias
 if [ -f ${HOME}/.zsh/zshrc.alias ]; then
@@ -222,3 +226,6 @@ if [ -f ${HOME}/.private/private.zshrc ]; then
     source ${HOME}/.private/private.zshrc
 fi
 
+if [ -f ${HOME}/.private/private.zshrc.bindkey ]; then
+    source ${HOME}/.private/private.zshrc.bindkey
+fi
