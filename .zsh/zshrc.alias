@@ -78,7 +78,7 @@ alias phpunit='phpunit --colors'
 # TODO
 # perl 5.18 では動かない
 perl_version=$(perl -v | awk '/This/ {print $4}' | sed -e 's/v//')
-if [ -x '/usr/bin/vendor_perl/ls++' ];then
+if hash ls++ >/dev/null 2>&1;then
     alias ls++='ls++ --potsf'
     alias ll='ls++ -l'
     alias la='ls++ -a'
@@ -94,19 +94,19 @@ else
 fi
 
 # color df
-if [ $(which dfc 2> /dev/null) ];then
+if hash dfc >/dev/null 2>&1;then
     alias df='dfc -Td'
 else
     alias df='df -hT'
 fi
 
 # color diff
-if [ $(which colordiff 2> /dev/null) ];then
+if hash colordiff >/dev/null 2>&1;then
     alias diff='colordiff -u --strip-trailing-cr'
 fi
 
 # color top
-if [ $(which htop 2> /dev/null) ];then
+if hash htop >/dev/null 2>&1;then
     alias top='htop'
 fi
 
@@ -163,7 +163,7 @@ alias enc.Lu='nkf -Lu --overwrite'
 alias enc.Lw='nkf -Lw --overwrite'
 
 # dstat
-if [ $(which dstat 2> /dev/null) ];then
+if hash dstat 2> /dev/null;then
     if [ ! -z "`dstat -h | grep 'enable io stats'`" ];then
         alias dstat-full='dstat -Tclmdrn'
         alias dstat-mem='dstat -Tclm'

@@ -94,7 +94,7 @@ export path manpath fpath infopath
 
 
 # $TERM
-if [ ! -z "`locate '*terminfo*screen-256color'`" ];then
+if [ hash locate 2> /dev/null && ! -z "`locate '*terminfo*screen-256color'`" ];then
     export TERM=screen-256color
 else
     export TERM=screen

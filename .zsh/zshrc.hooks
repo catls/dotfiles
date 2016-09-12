@@ -39,7 +39,9 @@ ls_abbrev() {
 chpwd_1() {
     echo ${green}`pwd`${attr_end}
     ls_abbrev
-    tree -C -L 2 -a > /tmp/pwd_tree
+    if hash tree >/dev/null 2>&1;then
+        tree -C -L 2 -a > /tmp/pwd_tree
+    fi
 }
 
 add-zsh-hook chpwd chpwd_1
