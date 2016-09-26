@@ -185,6 +185,8 @@ setopt extended_glob        # ファイル名で #, ~, ^ の 3 文字を正規�
 # zmv
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
+alias zcp='noglob zmv -W -C'
+alias zln='noglob zmv -W -L'
 
 zsh_files=(
     'zshrc'
