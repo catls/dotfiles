@@ -22,9 +22,9 @@ if v:version > 700
 
     "---------  vim-scripts リポジトリ ----------------------------------------
     " syntax
-    NeoBundle "css_color.vim"
     NeoBundle "xoria256.vim"
-    NeoBundle 'Align' "html整形
+    NeoBundle "chriskempson/vim-tomorrow-theme"
+    "NeoBundle 'Align' "html整形
 
     "---------  github リポジトリ ----------------------------------------
     NeoBundle 'vim-jp/vimdoc-ja'
@@ -55,7 +55,7 @@ if v:version > 700
     NeoBundle 'vim-scripts/MultipleSearch'
     NeoBundle 'vim-scripts/zoom.vim'
 
-    NeoBundle 'othree/html5.vim'
+    "NeoBundle 'othree/html5.vim'
     "NeoBundle 'vim-scripts/php.vim-html-enhanced'
     NeoBundle 'StanAngeloff/php.vim'
     "NeoBundle 'vim-scripts/smarty.vim'
