@@ -293,6 +293,7 @@ autocmd BufNewFile,BufRead .jshintrc set filetype=javascript
 
 " Twig
 autocmd BufNewFile,BufRead *.html.twig set filetype=htmldjango
+autocmd BufNewFile,BufRead *.txt.twig set filetype=htmldjango
 autocmd BufNewFile,BufRead *.js.twig set filetype=javascript
 
 
