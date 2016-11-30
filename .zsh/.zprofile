@@ -103,3 +103,4 @@ fi
 
 [ -d ${HOME}/.rbenv  ]  && eval "$(rbenv init --no-rehash -)"
 [ -d ${HOME}/.phpenv  ] && eval "$(phpenv init -)"
+[ -s ${HOME}/.nvm/nvm.sh ] && source ${HOME}/.nvm/nvm.sh
