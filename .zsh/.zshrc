@@ -33,13 +33,17 @@ setopt auto_pushd           # cd 時に自動で push
 setopt pushd_ignore_dups    # 同じディレクトリを pushしない
 
 # dircolors
-DIRCOLORS=.dircolors-`tput colors`
-if [[ -r ${HOME}/${DIRCOLORS} ]] then
-    eval `dircolors ${HOME}/${DIRCOLORS}`
-elif [[ -r ${HOME}/.dircolors ]] then
-    eval `dircolors ${HOME}/.dircolors`
-elif [[ -x '/usr/bin/dircolors' ]] then
-    eval $(dircolors)
+if whence dircolors >/dev/null; then
+    DIRCOLORS=.dircolors-`tput colors`
+    if [[ -r ${HOME}/${DIRCOLORS} ]] then
+        eval `dircolors ${HOME}/${DIRCOLORS}`
+    elif [[ -r ${HOME}/.dircolors ]] then
+        eval `dircolors ${HOME}/.dircolors`
+    elif [[ -x '/usr/bin/dircolors' ]] then
+        eval $(dircolors)
+    fi
+else
+    export CLICOLOR=1
 fi
 
 # 補完機能
