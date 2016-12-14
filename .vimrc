@@ -40,9 +40,16 @@ if v:version > 700
           \    },
           \ }
     NeoBundle 'thinca/vim-quickrun'
+    NeoBundle 'vim-scripts/MultipleSearch'
+
+    " php
+    NeoBundle 'StanAngeloff/php.vim'
     NeoBundle 'karakaram/vim-quickrun-phpunit'
-    NeoBundle 'jelera/vim-javascript-syntax'
     NeoBundle 'nathanaelkane/vim-indent-guides'
+    NeoBundle 'vim-scripts/PDV--phpDocumentor-for-Vim'  " phpdoc自動作成
+    "NeoBundle 'vim-scripts/smarty.vim'
+    "NeoBundle 'vim-scripts/smarty-syntax'
+    NeoBundle 'stephpy/vim-php-cs-fixer'
 
     " vim-ref
     NeoBundle 'thinca/vim-ref'
@@ -50,22 +57,17 @@ if v:version > 700
     "NeoBundle 'mustardamus/jqapi'
     "NeoBundle 'tokuhirom/jsref'
 
-    "NeoBundle 'Lokaltog/vim-easymotion'
-    NeoBundle 'int3/vim-extradite'
-    NeoBundle 'vim-scripts/MultipleSearch'
-    NeoBundle 'vim-scripts/zoom.vim'
+    " git
+    " NeoBundle 'int3/vim-extradite'
 
     "NeoBundle 'othree/html5.vim'
     "NeoBundle 'vim-scripts/php.vim-html-enhanced'
-    NeoBundle 'StanAngeloff/php.vim'
-    "NeoBundle 'vim-scripts/smarty.vim'
-    NeoBundle 'vim-scripts/smarty-syntax'
-    NeoBundle 'vim-scripts/PDV--phpDocumentor-for-Vim'  " phpdoc自動作成
-    NeoBundle 'stephpy/vim-php-cs-fixer'
     "NeoBundle 'thinca/vim-qfreplace'
 
-    NeoBundle 'thinca/vim-quickrun'
+    "javascript
+    NeoBundle 'jelera/vim-javascript-syntax'
     NeoBundle 'kchmck/vim-coffee-script'
+    NeoBundle 'heavenshell/vim-jsdoc'
 
     " css
     NeoBundle 'csscomb/vim-csscomb'
@@ -577,11 +579,8 @@ if filereadable(expand('~/.private/private.vimrc'))
     source ~/.private/private.vimrc
 endif
 
-
-" let g:indent_guides_enable_on_vim_startup=1
-" let g:indent_guides_start_level=2
-" let g:indent_guides_auto_colors=0
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
-" let g:indent_guides_color_change_percent = 30
-" let g:indent_guides_guide_size = 1
+"------------------------------------
+"   NeoBundle 'heavenshell/vim-jsdoc'
+"------------------------------------
+let g:jsdoc_default_mapping = 0
+nnoremap ,jd :JsDoc<CR>
