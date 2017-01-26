@@ -382,7 +382,7 @@ let g:syntastic_mode_map = { 'mode': 'active',
 " ステータスラインの内容。
 "let g:syntastic_stl_format = '[%E{E(%e):%fe}%B{ }%W{W(%w):%fw}]'
 let g:syntastic_stl_format = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: line %fw}]'
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_php_checkers = ['php','phpcs']
 let g:syntastic_php_phpcs_args='--standard=PSR2'
 
