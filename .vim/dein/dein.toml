@@ -16,63 +16,9 @@ hook_post_update = '''
   let g:dein#plugin.build = cmd
 '''
 
-# カラースキーマ
+# color scheme
 [[plugins]]
 repo = 'xoria256.vim'
 
 # [[plugins]]
 # repo = 'chriskempson/vim-tomorrow-theme'
-
-[[plugins]]
-repo = 'vim-jp/vimdoc-ja'
-
-[[plugins]]
-repo = 'scrooloose/syntastic'
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-[[plugins]]
-repo = 'vim-scripts/MultipleSearch'
-
-# php ####################################################
-[[plugins]]
-repo = 'StanAngeloff/php.vim'
-
-[[plugins]]
-repo = 'karakaram/vim-quickrun-phpunit'
-
-[[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-
-[[plugins]]
-repo = 'vim-scripts/PDV--phpDocumentor-for-Vim' # phpdoc自動作成
-
-[[plugins]]
-repo = 'stephpy/vim-php-cs-fixer'
-
-# vim-ref ####################################################
-[[plugins]]
-repo = 'thinca/vim-ref'
-
-[[plugins]]
-repo = 'mojako/ref-sources.vim'
-
-[[plugins]]
-repo = 'mustardamus/jqapi'
-
-[[plugins]]
-repo = 'tokuhirom/jsref'
-
-# javascript ###########################################
-[[plugins]]
-repo = 'jelera/vim-javascript-syntax'
-
-[[plugins]]
-repo = 'kchmck/vim-coffee-script'
-
-[[plugins]]
-repo = 'heavenshell/vim-jsdoc'
-
-# css ##################################
-[[plugins]]
-repo = 'csscomb/vim-csscomb'

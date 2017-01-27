@@ -1,0 +1,67 @@
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'vim-scripts/MultipleSearch'
+
+# php ####################################################
+[[plugins]]
+repo = 'StanAngeloff/php.vim'
+on_ft = ['php']
+
+[[plugins]]
+repo = 'karakaram/vim-quickrun-phpunit'
+on_ft = ['php']
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+on_ft = ['php']
+
+[[plugins]]
+repo = 'vim-scripts/PDV--phpDocumentor-for-Vim' # phpdoc自動作成
+on_ft = ['php']
+
+[[plugins]]
+repo = 'stephpy/vim-php-cs-fixer'
+on_cmd = ['PhpCsFixerFixFile']
+
+# vim-ref ####################################################
+[[plugins]]
+repo = 'thinca/vim-ref'
+on_cmd = ['Ref']
+
+[[plugins]]
+repo = 'mojako/ref-sources.vim'
+on_cmd = ['Ref']
+
+[[plugins]]
+repo = 'mustardamus/jqapi'
+on_cmd = ['Ref']
+
+[[plugins]]
+repo = 'tokuhirom/jsref'
+on_cmd = ['Ref']
+
+# javascript ###########################################
+[[plugins]]
+repo = 'jelera/vim-javascript-syntax'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'heavenshell/vim-jsdoc'
+on_ft = ['javscript']
+
+# css ##################################
+[[plugins]]
+repo = 'csscomb/vim-csscomb'
+on_ft = ['css']
