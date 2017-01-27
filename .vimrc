@@ -7,102 +7,11 @@ if v:version > 700
         autocmd!
     augroup END
 
+    " load plugins
     if v:version >= 704
-        " dein settings {{{
-        " install dein
-        let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
-        let s:dein_dir = s:cache_home . '/dein'
-        let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-        if !isdirectory(s:dein_repo_dir)
-            call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
-        endif
-        let &runtimepath = s:dein_repo_dir .",". &runtimepath
-        " プラグイン読み込み＆キャッシュ作成
-        let s:toml_file = '~/.vim/dein/dein.toml'
-        if dein#load_state(s:dein_dir)
-            call dein#begin(s:dein_dir, [$MYVIMRC, s:toml_file])
-            call dein#load_toml(s:toml_file)
-            call dein#end()
-            call dein#save_state()
-        endif
-        " 不足プラグインの自動インストール
-        if has('vim_starting') && dein#check_install()
-            call dein#install()
-        endif
-        " }}}
+        source ~/.vim/rc/dein.vim
     else
-        filetype off
-        " NeoBundle settings {{{
-        if !isdirectory(expand("~/.vim/bundle/neobundle.vim"))
-            !mkdir -p ~/.vim/bundle
-            !git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
-            let s:bootstrap=1
-        elseif !isdirectory(expand("~/.vim/bundle/vimdoc-ja"))
-            let s:bootstrap=1
-        endif
-
-        if has('vim_starting')
-            set runtimepath+=~/.vim/bundle/neobundle.vim
-        endif
-
-        call neobundle#begin(expand('~/.vim/bundle'))
-
-        " let NeoBundle manage NeoBundle
-        NeoBundle 'Shougo/neobundle.vim'
-
-        "---------  vim-scripts リポジトリ ----------------------------------------
-        " syntax
-        NeoBundle "xoria256.vim"
-        NeoBundle "chriskempson/vim-tomorrow-theme"
-
-        "---------  github リポジトリ ----------------------------------------
-        NeoBundle 'vim-jp/vimdoc-ja'
-        NeoBundle 'scrooloose/syntastic'
-        "NeoBundle 'Shougo/unite.vim'
-        "NeoBundle 'Shougo/neocomplcache'
-        "NeoBundle 'Shougo/neosnippet'
-        "NeoBundle 'Shougo/vimshell'
-        "NeoBundle 'Shougo/vimfiler'
-        NeoBundle 'Shougo/vimproc', {
-                    \ 'build' : {
-                    \     'unix' : 'make -f make_unix.mak',
-                    \    },
-                    \ }
-        NeoBundle 'thinca/vim-quickrun'
-        NeoBundle 'vim-scripts/MultipleSearch'
-
-        " php
-        NeoBundle 'StanAngeloff/php.vim'
-        NeoBundle 'karakaram/vim-quickrun-phpunit'
-        NeoBundle 'nathanaelkane/vim-indent-guides'
-        NeoBundle 'vim-scripts/PDV--phpDocumentor-for-Vim' " phpdoc自動作成
-        NeoBundle 'stephpy/vim-php-cs-fixer'
-
-        " vim-ref
-        NeoBundle 'thinca/vim-ref'
-        "NeoBundle 'mojako/ref-sources.vim'
-        "NeoBundle 'mustardamus/jqapi'
-        "NeoBundle 'tokuhirom/jsref'
-
-        "javascript
-        NeoBundle 'jelera/vim-javascript-syntax'
-        NeoBundle 'kchmck/vim-coffee-script'
-        NeoBundle 'heavenshell/vim-jsdoc'
-
-        " css
-        NeoBundle 'csscomb/vim-csscomb'
-
-        " twig
-        "NeoBundle 'Jinja'
-        "NeoBundle 'ocim/htmljinja.vim'
-        call neobundle#end()
-
-        if exists("s:bootstrap") && s:bootstrap
-            unlet s:bootstrap
-            NeoBundleInstall
-        endif
-        " }}}
-        filetype plugin indent on
+        source ~/.vim/rc/neobundle.vim
     endif
 endif
 
