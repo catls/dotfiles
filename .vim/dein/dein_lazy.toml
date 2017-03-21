@@ -3,9 +3,11 @@ repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'scrooloose/syntastic'
+on_ft = ['php','javscript']
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
+on_ft = ['php','javscript']
 
 [[plugins]]
 repo = 'vim-scripts/MultipleSearch'
