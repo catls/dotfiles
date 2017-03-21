@@ -49,37 +49,42 @@ zipra(){
 }
 
 extract () {
-  for i in $*; do
-      if [ -f $i ] ; then
-          case $i in
-              *.tar.bz2) tar xvjf $i ;;
-              *.tar.gz)  tar xvzf $i ;;
-              *.tar.xz)  tar xvJf $i ;;
-              *.bz2)     bunzip2 $i ;;
-              *.rar)     unrar x $i ;;
-              *.gz)      gunzip $i ;;
-              *.tar)     tar xvf $i ;;
-              *.tbz2)    tar xvjf $i ;;
-              *.tgz)     tar xvzf $i ;;
-    #          *.zip)     unzip $i ;;
-              *.zip)     unzip -O CP932 $i ;;
-              *.Z)       uncompress $i ;;
-              *.7z)      7z x $i ;;
-              *.xz)      unxz $i ;;
-              *.exe)     cabextract $i ;;
-              *.ace)     unace $i ;;
-              *.arj)     unarj $i ;;
-              *.deb)     deb2targz $i ;;
-              *.lzh)     lha e $i ;;
-              *.lha)     lha e $i ;;
-              *.lzma)    tar xvf $i --lzma;;
-              *.7z)      7z e $i ;;
-              *) echo "\`$i': unrecognized file compression" ;;
-          esac
-       else
-          echo "\`$i' is not a valid file"
-      fi
-  done
+    for i in $*; do
+        if [ -f $i ] ; then
+            case $i in
+                *.tar.bz2) tar xvjf $i ;;
+                *.tar.gz)  tar xvzf $i ;;
+                *.tar.xz)  tar xvJf $i ;;
+                *.bz2)     bunzip2 $i ;;
+                *.rar)     unrar x $i ;;
+                *.gz)      gunzip $i ;;
+                *.tar)     tar xvf $i ;;
+                *.tbz2)    tar xvjf $i ;;
+                *.tgz)     tar xvzf $i ;;
+                *.zip)
+                    if [ unzip -hh | grep '\-O' 2> /dev/null];then
+                        unzip -O CP932 $i
+                     else
+                        unzip $i
+                     fi
+                    break;;
+                *.Z)       uncompress $i ;;
+                *.7z)      7z x $i ;;
+                *.xz)      unxz $i ;;
+                *.exe)     cabextract $i ;;
+                *.ace)     unace $i ;;
+                *.arj)     unarj $i ;;
+                *.deb)     deb2targz $i ;;
+                *.lzh)     lha e $i ;;
+                *.lha)     lha e $i ;;
+                *.lzma)    tar xvf $i --lzma;;
+                *.7z)      7z e $i ;;
+                *) echo "\`$i': unrecognized file compression" ;;
+            esac
+        else
+            echo "\`$i' is not a valid file"
+        fi
+    done
 }
 
 
