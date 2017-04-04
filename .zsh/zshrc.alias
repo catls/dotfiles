@@ -46,6 +46,7 @@ alias cal="cal -m"
 alias grep='grep --color=auto'
 alias grepc='grep --color=always'
 alias less='less -R'
+alias vi='vim -u NONE --noplugin'
 alias gv='gvim --remote-tab-silent'
 alias gvp='gvim -p'
 alias mc='mcomix'
