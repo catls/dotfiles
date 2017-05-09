@@ -66,3 +66,6 @@ fi
 
 # submodule init
 git submodule update --init --recursive
+
+# for mac
+# brew install coreutils

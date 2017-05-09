@@ -136,7 +136,15 @@ tmad(){
 # fi
 safety_cat(){
     local max=100000
-    local size=`\du -b "$1" | cut -f 1`
+    local size=0
+    case "${OSTYPE}" in
+        freebsd*|darwin*)
+            size=`\gdu -b "$1" | cut -f 1`
+            ;;
+        linux*)
+            size=`\du -b "$1" | cut -f 1`
+            ;;
+    esac
     if [ $max -le $size ];then
         echo "$1 is large ($size byte)"
     else
