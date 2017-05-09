@@ -13,3 +13,6 @@ set diff-context = 6
 
 # main viewの左端にコミットIDを表示する
 set main-view = id date author commit-title:graph=yes,refs=yes
+
+# グラフ表示タイプ
+set line-graphics = ascii
