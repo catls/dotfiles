@@ -1,19 +1,13 @@
 # User-defined zlogin file for zsh login shells
-# #
-# # Typically contains external commands (biff, msgs, clear, fortune, etc.)
-# # No tcsh or bash equivalent
-# # Be aware that this is called for each interactive shell, including forked 
-# # (non-login) shells
 #
-# # Examples:
-# #clear
-# #stty dec new cr0 -tabs
-# #ttyctl -f  # freeze the terminal modes... can't change without a ttyctl -u
-# #mesg y
-# #uptime
-# #fortune
-# #log
-# #from 2>/dev/null
-# #msgs -fp
+weather_area=roppongi
+weather_data=/tmp/weather/`date +"%m%d"`
+[ ! -d /tmp/weather ] && mkdir /tmp/weather
+if [ ! -f $file ];then
+    curl wttr.in/$area 2> /dev/null | sed -n '8,17p' > $weather_data
+fi
+cat $weather_data
+unset weather_area
+unset weather_data
 
 pwd && uptime
