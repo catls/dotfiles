@@ -346,6 +346,7 @@ alias c='clear' # ctr+l
 alias d='dirs -v'
 alias h='fc -li'
 alias j='jobs -l'
+alias l='\less -R' # plain less
 alias m="mirage-random &"
 alias p='popd > /dev/null && cd .'
 alias pp='pushd > /dev/null'

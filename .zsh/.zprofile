@@ -100,6 +100,8 @@ else
     export TERM=screen
 fi
 
+# less
+export LESSOPEN='|~/.lessfilter %s'
 
 [ -d ${HOME}/.rbenv  ]  && eval "$(rbenv init --no-rehash -)"
 [ -d ${HOME}/.phpenv  ] && eval "$(phpenv init -)"
