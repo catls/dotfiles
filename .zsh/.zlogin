@@ -3,7 +3,7 @@
 weather_area=roppongi
 weather_data=/tmp/weather/`date +"%m%d"`
 [ ! -d /tmp/weather ] && mkdir /tmp/weather
-if [ ! -f $file ];then
+if [ ! -f $weather_data ];then
     curl wttr.in/$area 2> /dev/null | sed -n '8,17p' > $weather_data
 fi
 cat $weather_data
