@@ -12,5 +12,9 @@
         lineNumber = true
 [log]
         decorate = full
+[status]
+      showUntrackedFiles = all
+      # Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
+      # https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
 [include]
         path = ~/.private/private.gitconfig
