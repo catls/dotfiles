@@ -117,9 +117,6 @@ set modelines=5
 augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.html.twig setlocal tabstop=2 softtabstop=2 shiftwidth=2
-augroup END
-augroup fileTypeIndent
-    autocmd!
     autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
