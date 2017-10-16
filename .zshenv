@@ -61,3 +61,4 @@ MYSQL_PS1="\u@\h:\d> "
 export MYSQL_PS1
 
 export ZDOTDIR=~/.zsh/
+source ${ZDOTDIR}.zprofile
