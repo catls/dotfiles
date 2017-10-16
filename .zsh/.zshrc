@@ -103,6 +103,10 @@ zstyle ':completion:*:expand:*' tag-order all-expansions
 # カレントディレクトリに候補がない場合のみ cdpath 上のディレクトリを候補
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 
+# completion caching
+zstyle ':completion::complete:*' use-cache yes
+zstyle ':completion::complete:*' cache-path ${ZDOTDIR}.zcompcache/$HOST
+
 # どうしようか悩み中
 # ## case-insensitive (uppercase from lowercase) completion
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -114,9 +118,6 @@ zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 # ## ignore completion functions (until the _ignored completer)
 # zstyle ':completion:*:functions' ignored-patterns '_*'
 #
-# ## completion caching
-# zstyle ':completion::complete:*' use-cache 1
-# zstyle ':completion::complete:*' cache-path ${HOME}/.zcompcache/$HOST
 #
 # ## don't complete backup files as executables
 # zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'
@@ -132,10 +133,6 @@ zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 #
 # zstyle ':completion:*:*:ogg123:*' file-patterns \
 # '*.(ogg|OGG):ogg\ files *(-/):directories'
-#
-# ## generic completions for programs which understand GNU long options(--help)
-#
-# compdef _gnu_generic slrnpull make df du
 #
 
 ## processesの補完
