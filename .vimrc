@@ -16,6 +16,13 @@ if v:version > 700
 endif
 
 "------------------------------------------------
+" debug
+"------------------------------------------------
+" set verbosefile=/tmp/vim.log
+" set verbose=20
+
+
+"------------------------------------------------
 "           エンコーディング
 "------------------------------------------------
 set encoding=utf-8
@@ -302,7 +309,6 @@ let g:syntastic_stl_format = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: li
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_php_checkers = ['php','phpcs']
 let g:syntastic_php_phpcs_args='--standard=PSR2'
-
 
 
 "------------------------------------
