@@ -18,7 +18,7 @@ hook_post_update = '''
 
 # color scheme
 [[plugins]]
-repo = 'xoria256.vim'
+repo = 'vim-scripts/xoria256.vim'
 
 # [[plugins]]
 # repo = 'chriskempson/vim-tomorrow-theme'
