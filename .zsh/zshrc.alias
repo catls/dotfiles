@@ -263,6 +263,7 @@ alias g.pl='git pull --ff-only'
 alias g.pl.nff='git pull --no-ff'
 alias g.pl.ff='git pull --ff'
 alias g.ps='git push'
+alias g.delete-log='git log --diff-filter=D --summary'
 
 g.ps-all(){
     branch=$(git branch -a 2>/dev/null | grep "^*" | tr -d '\* ')
@@ -298,6 +299,7 @@ alias g.subupd='git submodule foreach "git checkout master; git pull" && cd $(gi
 alias t.s='tig status'
 alias t.show='tig show'
 alias t.b='tig blame'
+alias t.delete-log='tig --diff-filter=D'
 
 # for archlinux
 if [[ `uname -r` =~ ARCH$ ]]; then
