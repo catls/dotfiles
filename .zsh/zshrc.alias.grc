@@ -1,0 +1,43 @@
+if [[ "$TERM" != dumb ]] && (( $+commands[grc] )) ; then
+  # Prevent grc aliases from overriding zsh completions.
+  setopt COMPLETE_ALIASES
+
+  # Supported commands
+  cmds=(
+    cc \
+    configure \
+    cvs \
+    df \
+    diff \
+    dig \
+    gcc \
+    gmake \
+    ifconfig \
+    last \
+    ldap \
+    ls \
+    make \
+    mount \
+    mtr \
+    netstat \
+    ping \
+    ping6 \
+    ps \
+    traceroute \
+    traceroute6 \
+    wdiff \
+  );
+
+  # Set alias for available commands.
+  for cmd in $cmds ; do
+    if (( $+commands[$cmd] )) ; then
+        if alias $cmd >/dev/null 2>&1;then
+        else
+            alias $cmd="grc --colour=auto $cmd"
+        fi
+    fi
+  done
+
+  # Clean up variables
+  unset cmds cmd
+fi

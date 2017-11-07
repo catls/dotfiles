@@ -433,3 +433,6 @@ alias xmobarrc='vi ~/.xmobarrc && killall xmobar;xmobar &'
 
 # zcompdump
 alias reload-shell="rm ${ZDOTDIR}/.zcompdump && exec $SHELL -l"
+
+# grc
+source ${HOME}/.zsh/zshrc.alias.grc
