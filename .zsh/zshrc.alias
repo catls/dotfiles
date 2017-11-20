@@ -290,6 +290,13 @@ g.delete-remote-branch-push(){
         git push $remote :$branch
     done
 }
+g.clean-local-branch(){
+    targetBranch=$1
+    for branch in $(git branch --no-color --merged $targetBranch | grep -vE '^\*' | awk '{ print $1 }');do
+        echo "git branch -d $branch"
+        git branch -d $branch
+    done
+}
 
 alias g.l='git log --stat --summary'
 alias g.lg="git log --graph --date=short --pretty='%C(yellow)%h%Creset %C(cyan bold)%d%Creset %s %Cgreen[%cd]%Creset' --decorate --all"
