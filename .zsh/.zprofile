@@ -93,7 +93,7 @@ typeset -U infopath
 export path manpath fpath infopath
 
 # $TERM
-+term_file=/tmp/zsh-locate-terminfo-screen-256color
+term_file=/tmp/zsh-locate-terminfo-screen-256color
 if [ ! -f $term_file ];then
     touch $term_file
 fi
