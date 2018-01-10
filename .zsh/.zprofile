@@ -92,9 +92,15 @@ typeset -U infopath
 
 export path manpath fpath infopath
 
-
 # $TERM
-if hash locate 2> /dev/null && [ ! -z "`locate '*terminfo*screen-256color'`" ];then
++term_file=/tmp/zsh-locate-terminfo-screen-256color
+if [ ! -f $term_file ];then
+    touch $term_file
+fi
+if hash locate 2> /dev/null;then
+    locate '*terminfo*screen-256color' > $term_file
+fi
+if [ ! -z "$(cat $term_file)" ];then
     export TERM=screen-256color
 else
     export TERM=screen
