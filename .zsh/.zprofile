@@ -94,13 +94,14 @@ export path manpath fpath infopath
 
 # $TERM
 term_file=/tmp/zsh-locate-terminfo-screen-256color
-if [ ! -f $term_file ];then
-    touch $term_file
+touch $term_file
+screen256color=$(cat $term_file)
+if [ -z "$screen256color" ];then
+    if hash locate 2> /dev/null;then
+        locate '*terminfo*screen-256color' > $term_file && screen256color=true
+    fi
 fi
-if hash locate 2> /dev/null;then
-    locate '*terminfo*screen-256color' > $term_file
-fi
-if [ ! -z "$(cat $term_file)" ];then
+if [ ! -z "$screen256color" ];then
     export TERM=screen-256color
 else
     export TERM=screen
