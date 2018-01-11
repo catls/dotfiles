@@ -1,0 +1,43 @@
+if (( $+commands[docker] ));then
+    # docker container
+    alias d.c='docker container'
+    alias d.c.attach='docker container attach'   # docker attach            実行中のコンテナにアタッチ
+    alias d.c.commit='docker container commit'   # docker commit            コンテナに対する変更から新しいイメージを作成
+    alias d.c.cp='docker container cp'           # docker cp                コンテナとローカル間でファイルとディレクトリのコピー
+    alias d.c.create='docker container create'   # docker                   新しいコンテナの作成
+    alias d.c.diff='docker container diff'       # docker diff              イメージとコンテナの変更情報を調べる
+    alias d.c.exec='docker container exec'       # docker exec              実行中のコンテナ内でコマンド実行
+    alias d.c.export='docker container export'   # docker export            コンテナのファイルシステムをtarアーカイブ化
+    alias d.c.inspect='docker container inspect' # docker container inspect コンテナの詳細情報を表示
+    alias d.c.kill='docker container kill'       # docker kill              コンテナのプロセスを停止(kill)
+    alias d.c.logs='docker container logs'       # docker logs              コンテナのログを表示
+    alias d.c.ls='docker container ls'           # docker ps                コンテナ一覧の表示
+    alias d.c.pause='docker container pause'     # docker pause             コンテナのプロセスを一時停止(pause)
+    alias d.c.port='docker container port'       # docker port              コンテナが使用しているポート情報の表示
+    alias d.c.prune='docker container prune'     # (v1.13～)                停止中の全コンテナを削除
+    alias d.c.rename='docker container rename'   # docker rename            コンテナの名称を変更
+    alias d.c.restart='docker container restart' # docker restart           コンテナを再起動
+    alias d.c.rm='docker container rm'           # docker rm                コンテナの削除
+    alias d.c.run='docker container run'         # docker run               新しいコンテナを実行
+    alias d.c.start='docker container start'     # docker start             停止中のコンテナを起動
+    alias d.c.stats='docker container stats'     # docker stats             コンテナのリソース使用状況を表示
+    alias d.c.stop='docker container stop'       # docker stop              実行中のコンテナを停止
+    alias d.c.top='docker container top'         # docker top               コンテナが実行しているプロセスを表示
+    alias d.c.unpause='docker container unpause' # docker unpause           一時停止中のコンテナを再開
+    alias d.c.update='docker container update'   # docker update            コンテナの（リソース）設定を変更
+    alias d.c.wait='docker container wait'       # docker wait              コンテナが停止するまで待機
+    # docker image
+    alias d.i='docker image'
+    alias d.i.build='docker image build'     # docker build    Dockerfile からイメージを構築（ビルド）
+    alias d.i.history='docker image history' # docker history  イメージの履歴を表示
+    alias d.i.import='docker image import'   # docker import   tar 形式のファイルを読み込み、イメージを作成
+    alias d.i.inspect='docker image inspect' # docker inspect  イメージの詳細情報を表示
+    alias d.i.load='docker image load'       # docker load tar 形式または標準入力からイメージを読み込む
+    alias d.i.ls='docker image ls'           # docker images   イメージ一覧表示
+    alias d.i.prune='docker image prune'     # (v1.13～)       使用していないイメージを削除
+    alias d.i.pull='docker image pull'       # docker pull     イメージをレジストリから取得
+    alias d.i.push='docker image push'       # docker push     イメージをレジストリに送信
+    alias d.i.rm='docker image rm'           # docker rmi      イメージを削除
+    alias d.i.save='docker image save'       # docker save     イメージを tar 形式または標準出力にストリーム
+    alias d.i.tag='docker image tag'         # docker tag      イメージを参照する新しいタグを付ける
+fi

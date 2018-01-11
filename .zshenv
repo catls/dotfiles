@@ -60,5 +60,5 @@ MYSQL_PS1="\u@\h:\d> "
 # MYSQL_PS1=$(host=$(echo "\h>");[ $(echo "$host" | grep local ) ] && echo -e "\e[1;33{$host}[\d]\e[0m\n> " || echo $host)
 export MYSQL_PS1
 
-export ZDOTDIR=~/.zsh/
-source ${ZDOTDIR}.zprofile
+export ZDOTDIR=${HOME}/.zsh
+source ${ZDOTDIR}/.zprofile

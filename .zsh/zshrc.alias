@@ -443,3 +443,5 @@ alias reload-shell="rm ${ZDOTDIR}/.zcompdump && exec $SHELL -l"
 
 # grc
 source ${HOME}/.zsh/zshrc.alias.grc
+# docker
+source ${HOME}/.zsh/zshrc.alias.docker
