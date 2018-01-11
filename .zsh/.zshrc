@@ -105,7 +105,7 @@ zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 
 # completion caching
 zstyle ':completion::complete:*' use-cache yes
-zstyle ':completion::complete:*' cache-path ${ZDOTDIR}.zcompcache/$HOST
+zstyle ':completion::complete:*' cache-path ${ZDOTDIR}/.zcompcache/$HOST
 
 # どうしようか悩み中
 # ## case-insensitive (uppercase from lowercase) completion
@@ -200,8 +200,8 @@ zsh_files=(
     'completion'
 )
 for file in ${zsh_files[@]}; do
-    if [ -f ${ZDOTDIR}zshrc.${file} ]; then
-        source ${ZDOTDIR}zshrc.${file}
+    if [ -f ${ZDOTDIR}/zshrc.${file} ]; then
+        source ${ZDOTDIR}/zshrc.${file}
     fi
 
     # ローカルzshrcの読み込み
