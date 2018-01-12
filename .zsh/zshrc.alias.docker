@@ -40,4 +40,11 @@ if (( $+commands[docker] ));then
     alias d.i.rm='docker image rm'           # docker rmi      イメージを削除
     alias d.i.save='docker image save'       # docker save     イメージを tar 形式または標準出力にストリーム
     alias d.i.tag='docker image tag'         # docker tag      イメージを参照する新しいタグを付ける
+    # docker volume
+    alias d.v='docker volume'
+    alias d.v.create='docker volume create'
+    alias d.v.inspect='docker volume inspect'
+    alias d.v.ls='docker volume ls'
+    alias d.v.prune='docker volume prune'
+    alias d.v.rm='docker volume rm'
 fi
