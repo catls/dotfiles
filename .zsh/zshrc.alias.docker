@@ -47,4 +47,6 @@ if (( $+commands[docker] ));then
     alias d.v.ls='docker volume ls'
     alias d.v.prune='docker volume prune'
     alias d.v.rm='docker volume rm'
+
+    alias docker-proxy-build="docker image build --build-arg http_proxy=$HTTP_PROXY --build-arg https_proxy=$HTTPS_PROXY"
 fi
