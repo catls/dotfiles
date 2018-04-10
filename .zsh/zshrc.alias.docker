@@ -48,5 +48,11 @@ if (( $+commands[docker] ));then
     alias d.v.prune='docker volume prune'
     alias d.v.rm='docker volume rm'
 
+    # お掃除
+    alias d.c.clean-status-exited='docker container ps -a -q -f "status=exited" | xargs --no-run-if-empty docker rm -v'
+    alias d.i.clean-dangling-true='docker image ls -q -f "dangling=true" | xargs --no-run-if-empty docker rmi'
+    alias d.v.clean-dangling-true='docker volume ls -q -f "dangling=true" | xargs --no-run-if-empty docker volume rm'
+
+    # proxy build
     alias docker-proxy-build="docker image build --build-arg http_proxy=$HTTP_PROXY --build-arg https_proxy=$HTTPS_PROXY"
 fi
