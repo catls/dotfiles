@@ -22,3 +22,6 @@ repo = 'vim-scripts/xoria256.vim'
 
 # [[plugins]]
 # repo = 'chriskempson/vim-tomorrow-theme'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'

@@ -507,3 +507,12 @@ endif
 "------------------------------------
 let g:jsdoc_default_mapping = 0
 nnoremap ,jd :JsDoc<CR>
+
+"------------------------------------
+"  NeoBundle 'airblade/vim-gitgutter'
+"------------------------------------
+set updatetime=250
+highlight SignColumn ctermbg=black
+let g:gitgutter_highlight_lines = 0
+nnoremap <silent> ,gt :<C-u>GitGutterToggle<CR>
+nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>tgutter_highlight_lines = 1
