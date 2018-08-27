@@ -226,11 +226,9 @@ autocmd BufNewFile,BufRead *.html.twig set filetype=htmldjango
 autocmd BufNewFile,BufRead *.txt.twig set filetype=htmldjango
 autocmd BufNewFile,BufRead *.js.twig set filetype=javascript
 
-
 "------------------------------------------------
 "           functions
 "------------------------------------------------
-
 "挿入モード時、ステータスラインの色を変更
 "let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
 let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=#A3A3A3 gui=none ctermfg=blue ctermbg=yellow cterm=none'
@@ -310,7 +308,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_php_checkers = ['php','phpcs']
 let g:syntastic_php_phpcs_args='--standard=PSR2'
 
-
 "------------------------------------
 " unite.vim
 "------------------------------------
@@ -329,55 +326,48 @@ let g:syntastic_php_phpcs_args='--standard=PSR2'
 " " 全部
 " noremap <C-U><C-A> :Unite UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 " " ESCキーを2回押すと終了する
-" au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-" au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-
-
-""" unite.vim
-" 入力モードで開始する
-" let g:unite_enable_start_insert=1
-" バッファ一覧
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-" ファイル一覧
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-" レジスタ一覧
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-" 最近使用したファイル一覧
-nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
-" 常用セット
-nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
-" 全部乗せ
-nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-
-" ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-" ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
-
-
+" " au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+" " au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+" " 入力モードで開始する
+" " let g:unite_enable_start_insert=1
+" " バッファ一覧
+" nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" " ファイル一覧
+" nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" " レジスタ一覧
+" nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" " 最近使用したファイル一覧
+" nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" " 常用セット
+" nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+" " 全部乗せ
+" nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+" 
+" " ウィンドウを分割して開く
+" au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+" au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+" " ウィンドウを縦に分割して開く
+" au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+" au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+" " ESCキーを2回押すと終了する
+" au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+" au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
 "------------------------------------
 " Bundle 'jelera/vim-javascript-syntax'
 "------------------------------------
 au FileType javascript call JavaScriptFold()
 
-
 "------------------------------------
-"Bundle 'nathanaelkane/vim-indent-guides'
+"    'nathanaelkane/vim-indent-guides'
 "------------------------------------
 "let g:indent_guides_enable_on_vim_startup = 1
 "let g:indent_guides_auto_colors = 0
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#121212 ctermbg=233
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#262626 ctermbg=235
 
-
 "------------------------------------
-" Bundle 'thinca/vim-ref'
+"    'thinca/vim-ref'
 "------------------------------------
 let g:ref_phpmanual_path = $HOME.'/.vim/doc/php-docs-ja/php-chunked-xhtml'
 "webdictサイトの設定
@@ -421,7 +411,6 @@ nmap <Leader>re :<C-u>Ref webdict ej<Space>
 ":Ref webdict {site-name} {keyword}
 "サイトのデフォルトを英和辞書に設定しているため、サイト名を省略した場合は英和辞書が呼び出されます。
 ":Ref webdict {keyword}
-"
 
 "------------------------------------
 " Bundle 'Lokaltog/vim-easymotion'
@@ -441,17 +430,14 @@ let g:EasyMotion_keys = 'fjdkslaureiwoqpvncm'
 " let g:quickrun_config['_'] = {}
 " let g:quickrun_config['_']['runner'] = 'vimproc'
 " let g:quickrun_config['_']['runner/vimproc/updatetime'] = 100
-
-"--------------------------------------------------
+"------------
 " 通常の表示（横分割して結果表示）
 " let g:quickrun_config['phpunit'] = {}
 " let g:quickrun_config['phpunit']['outputter/buffer/split'] = 'vertical 50'
 " let g:quickrun_config['phpunit']['command'] = 'phpunit'
 " let g:quickrun_config['phpunit']['cmdopt'] = ''
 " let g:quickrun_config['phpunit']['exec'] = '%c %o %s'
-"--------------------------------------------------
-
-"--------------------------------------------------
+"------------
 " ステータスラインの下に結果を表示
 " let g:quickrun_config['phpunit'] = {}
 " let g:quickrun_config['phpunit']['outputter'] = 'phpunit'
@@ -462,9 +448,8 @@ let g:EasyMotion_keys = 'fjdkslaureiwoqpvncm'
 " let g:quickrun_config['phpunit']['outputter/phpunit/running_mark'] = 'running...'
 " let g:quickrun_config['phpunit']['outputter/phpunit/auto_open'] = 0
 
-
 "------------------------------------
-"    NeoBundle 'stephpy/vim-php-cs-fixer'
+"    'stephpy/vim-php-cs-fixer'
 "------------------------------------
 let g:php_cs_fixer_path = "~/.config/composer/bin/php-cs-fixer" " define the path to the php-cs-fixer.phar
 " let g:php_cs_fixer_level = "all"                  " which level ?
@@ -485,7 +470,7 @@ nnoremap ,pf :call PhpCsFixerFixFile()<CR>
 "autocmd FileType javascript :set dictionary=~/.vim/dict/javascript.dict,dict/jQuery.dict
 
 "------------------------------------
-"   NeoBundle 'PDV--phpDocumentor-for-Vim'
+"   'PDV--phpDocumentor-for-Vim'
 "------------------------------------
 let g:pdv_cfg_Type = "mixed"
 let g:pdv_cfg_Package = ""
@@ -503,7 +488,16 @@ if filereadable(expand('~/.private/private.vimrc'))
 endif
 
 "------------------------------------
-"   NeoBundle 'heavenshell/vim-jsdoc'
+"   'heavenshell/vim-jsdoc'
 "------------------------------------
 let g:jsdoc_default_mapping = 0
 nnoremap ,jd :JsDoc<CR>
+
+"------------------------------------
+"  'airblade/vim-gitgutter'
+"------------------------------------
+set updatetime=250
+highlight SignColumn ctermbg=black
+let g:gitgutter_highlight_lines = 0
+nnoremap <silent> ,gt :<C-u>GitGutterToggle<CR>
+nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>tgutter_highlight_lines = 1
