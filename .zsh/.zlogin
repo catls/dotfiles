@@ -1,6 +1,6 @@
 # User-defined zlogin file for zsh login shells
 #
-weather_area=roppongi
+weather_area=osaki
 weather_data=/tmp/weather/`date +"%m%d"`
 [ ! -d /tmp/weather ] && mkdir /tmp/weather
 if [ ! -f $weather_data ];then
