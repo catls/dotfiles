@@ -97,7 +97,7 @@ term_file=/tmp/zsh-locate-terminfo-screen-256color
 touch $term_file
 screen256color=$(cat $term_file)
 if [ -z "$screen256color" ];then
-    if hash locate 2> /dev/null;then
+    if which locate 2> /dev/null;then
         locate '*terminfo*screen-256color' > $term_file && screen256color=true
     fi
 fi
