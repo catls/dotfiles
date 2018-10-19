@@ -67,5 +67,14 @@ fi
 # submodule init
 git submodule update --init --recursive
 
+vim +PluginInstall +qall
+VIM_VERSION=$(vim --version | head -1 | cut -d ' ' -f 5)
+if [ ! $(echo "$VIM_VERSION <= 7.4" | bc -l) ]; then
+    # vim <= 7.4
+    cd $HOME/.vim/cache/dein/repos/github.com/Shougo/dein.vim/
+    git checkout 1.0
+    vim +PluginInstall +qall
+fi
+
 # for mac
 # brew install coreutils
