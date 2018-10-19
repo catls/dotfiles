@@ -148,7 +148,7 @@ zstyle ':completion:*' users $users
 zstyle ':completion::*:netctl:*' file-patterns '/etc/netctl/*(.\:t):netctl\ profiles'
 
 # hostnames
-hosts=( $(cat /etc/hosts | grep -v "^#" | awk '{print $1}'| cut -d"," -f1), $(cat $HOME/.ssh/known_hosts | grep -v "^|1|" | awk '{print $1}'| cut -d"," -f1))
+hosts=( $(cat /etc/hosts | grep -v "^#" | awk '{print $1}'| cut -d"," -f1), $([ -f $HOME/.ssh/known_hosts ] && cat $HOME/.ssh/known_hosts | grep -v "^|1|" | awk '{print $1}'| cut -d"," -f1))
 zstyle ':completion:*' hosts $hosts
 
 # ## (user,host) pairs
