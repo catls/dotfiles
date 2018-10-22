@@ -304,7 +304,11 @@ colours=red
 -
 # 99999 Quit
 regexp=\s\d+\sQuit\s
-colours=red
+colours=white
+-
+# 99999 Connect
+regexp=\s\d+\sConnect\s
+colours=white
 -
 
 # Comment
