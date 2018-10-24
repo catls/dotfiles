@@ -140,7 +140,9 @@ endif
 "------------------------------------------------
 "           etc
 "------------------------------------------------
-set foldmethod=marker " 折りたたみ
+if v:version > 700
+    set foldmethod=marker " 折りたたみ
+endif
 set helplang=ja,en " 日本語ヘルプを使用
 "let g:neocomplcache_enable_at_startup = 1  "文字の補完
 
@@ -229,37 +231,39 @@ autocmd BufNewFile,BufRead *.js.twig set filetype=javascript
 "------------------------------------------------
 "           functions
 "------------------------------------------------
-"挿入モード時、ステータスラインの色を変更
-"let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
-let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=#A3A3A3 gui=none ctermfg=blue ctermbg=yellow cterm=none'
+if v:version > 700
+    "挿入モード時、ステータスラインの色を変更
+    "let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
+    let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=#A3A3A3 gui=none ctermfg=blue ctermbg=yellow cterm=none'
 
-if has('syntax')
-  augroup InsertHook
-    autocmd!
-    autocmd InsertEnter * call s:StatusLine('Enter')
-    autocmd InsertLeave * call s:StatusLine('Leave')
-  augroup END
+    if has('syntax')
+      augroup InsertHook
+        autocmd!
+        autocmd InsertEnter * call s:StatusLine('Enter')
+        autocmd InsertLeave * call s:StatusLine('Leave')
+      augroup END
+    endif
+
+    let s:slhlcmd = ''
+    function! s:StatusLine(mode)
+      if a:mode == 'Enter'
+        silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
+        silent exec g:hi_insert
+      else
+        highlight clear StatusLine
+        silent exec s:slhlcmd
+      endif
+    endfunction
+
+    function! s:GetHighlight(hi)
+      redir => hl
+      exec 'highlight '.a:hi
+      redir END
+      let hl = substitute(hl, '[\r\n]', '', 'g')
+      let hl = substitute(hl, 'xxx', '', '')
+      return hl
+    endfunction
 endif
-
-let s:slhlcmd = ''
-function! s:StatusLine(mode)
-  if a:mode == 'Enter'
-    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
-    silent exec g:hi_insert
-  else
-    highlight clear StatusLine
-    silent exec s:slhlcmd
-  endif
-endfunction
-
-function! s:GetHighlight(hi)
-  redir => hl
-  exec 'highlight '.a:hi
-  redir END
-  let hl = substitute(hl, '[\r\n]', '', 'g')
-  let hl = substitute(hl, 'xxx', '', '')
-  return hl
-endfunction
 
 ""スペースの可視化
 ""http://blog.remora.cx/2011/04/show-invisible-spaces-in-vim.html
