@@ -194,7 +194,7 @@ zsh_files=(
     'bindkey'
     'alias'
     'functions'
-    'antigen'
+    'zplug'
     'prompt'
     'hooks'
     'completion'
