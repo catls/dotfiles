@@ -18,6 +18,7 @@ xmonad-x86_64-linux
 
 # vim
 .vim/bundle
+.vim/vim-ref/cache
 .netrwhist
 
 # zsh

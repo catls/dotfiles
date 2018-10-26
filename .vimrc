@@ -373,6 +373,8 @@ au FileType javascript call JavaScriptFold()
 "------------------------------------
 "    'thinca/vim-ref'
 "------------------------------------
+let g:ref_cache_dir = $HOME . '/.vim/vim-ref/cache'
+let g:ref_use_cache = 1
 let g:ref_phpmanual_path = $HOME.'/.vim/doc/php-docs-ja/php-chunked-xhtml'
 "webdictサイトの設定
 let g:ref_source_webdict_sites = {
