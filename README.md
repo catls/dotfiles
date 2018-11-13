@@ -2,7 +2,7 @@ my dotiles
 
 #### vim :
 
-https://github.com/Shougo/dein.vim/issues/250
+https://github.com/Shougo/dein.vim/issues/250  
 vim <= 7.4 の場合は下記
 ```
 $ cd .vim/cache/dein/repos/github.com/Shougo/dein.vim/
