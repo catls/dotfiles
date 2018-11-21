@@ -67,3 +67,8 @@ on_ft = ['javascript']
 [[plugins]]
 repo = 'csscomb/vim-csscomb'
 on_ft = ['css']
+
+# vue ##################################
+[[plugins]]
+repo = 'posva/vim-vue'
+on_ft = ['vue']
