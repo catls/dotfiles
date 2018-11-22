@@ -65,7 +65,7 @@ if [[ -d $HOME/.config ]];then
 fi
 
 # submodule init
-git submodule update --init --recursive
+# git submodule update --init --recursive
 
 vim +PluginInstall +qall
 VIM_VERSION=$(vim --version | head -1 | cut -d ' ' -f 5)
