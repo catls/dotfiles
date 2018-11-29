@@ -69,6 +69,17 @@ zplug $ZDOTDIR, from:local
 # Load theme file
 zplug 'dracula/zsh', as:theme
 
+zplug "zsh-users/zaw"
+zplug "GeneralD/zaw-src-nerd-icon", on:"zsh-users/zaw", defer:2
+zplug "GeneralD/zaw-src-directory", on:"zsh-users/zaw", defer:2
+zplug "GeneralD/zaw-src-bitbucket", on:"zsh-users/zaw", defer:2
+zplug "GeneralD/zaw-src-github", on:"zsh-users/zaw", defer:2
+zplug "GeneralD/zaw-src-ghq", on:"zsh-users/zaw", on:"Tarrasch/zsh-functional", defer:2
+zplug "GeneralD/zaw-src-package-managers", on:"zsh-users/zaw", defer:2
+zplug "GeneralD/zaw-src-unity-launcher", on:"zsh-users/zaw", on:"Tarrasch/zsh-functional", on:"sttz/install-unity", defer:2
+zplug "sttz/install-unity", as:command, use:'(*).py', rename-to:'$1', if:"[[ $OSTYPE == *darwin* ]]",
+
+
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -88,3 +99,6 @@ ZSH_HIGHLIGHT_STYLES[command]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[builtin]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[path]='fg=green'
 ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=yellow'
+
+#zstyle ':filter-select' case-insensitive yes # 絞り込みをcase-insensitiveに
+bindkey '^x' zaw-cdr # zaw-cdrをbindkey

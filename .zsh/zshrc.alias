@@ -367,6 +367,7 @@ alias x='startx >& ~/x.err'
 # alias -g
 alias -g A='&&'
 alias -g C='| wc -l'
+alias -g F='$(fzf)'
 alias -g L='| $PAGER -c'
 alias -g M='| $PAGER -c'
 alias -g N='> /dev/null'

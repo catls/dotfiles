@@ -23,4 +23,5 @@ xmonad-x86_64-linux
 
 # zsh
 .zsh/.zcompdump
+.zsh/.chpwd-recent-dirs
 .zsh/zplug
