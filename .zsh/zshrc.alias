@@ -151,7 +151,7 @@ safety_cat(){
         \cat $1
     fi
 }
-alias cat="safety_cat"
+alias scat="safety_cat"
 
 
 # # color tailf
