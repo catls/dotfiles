@@ -76,9 +76,6 @@ zplug "GeneralD/zaw-src-bitbucket", on:"zsh-users/zaw", defer:2
 zplug "GeneralD/zaw-src-github", on:"zsh-users/zaw", defer:2
 zplug "GeneralD/zaw-src-ghq", on:"zsh-users/zaw", on:"Tarrasch/zsh-functional", defer:2
 zplug "GeneralD/zaw-src-package-managers", on:"zsh-users/zaw", defer:2
-zplug "GeneralD/zaw-src-unity-launcher", on:"zsh-users/zaw", on:"Tarrasch/zsh-functional", on:"sttz/install-unity", defer:2
-zplug "sttz/install-unity", as:command, use:'(*).py', rename-to:'$1', if:"[[ $OSTYPE == *darwin* ]]",
-
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
