@@ -5,7 +5,7 @@ fi
 source $ZPLUG_HOME/init.zsh
 
 # Make sure to use double quotes
-zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-history-substring-search", hook-build:"__zsh_version 4.3"
 
 # Use the package as a command
 # And accept glob patterns (e.g., brace, wildcard, ...)
