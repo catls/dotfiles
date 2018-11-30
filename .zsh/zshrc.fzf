@@ -1,16 +1,24 @@
 # Setup fzf
 # ---------
-if [[ ! "$PATH" == */home/sgn/.fzf/bin* ]]; then
-  export PATH="$PATH:${ZDOTDIR}/fzf/bin"
+FZF_DIR=${ZDOTDIR}/fzf
+if [ ! -d ${FZF_DIR} ];then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ${FZF_DIR}
+    yes n | ${FZF_DIR}/install
+    [ -f ${HOME}/.fzf.bash ] && rm ${HOME}/.fzf.bash
+    [ -f ${HOME}/.fzf.zsh ] && rm ${HOME}/.fzf.zsh
+fi
+
+if [[ ! "$PATH" == *${FZF_DIR}/bin* ]]; then
+  export PATH="$PATH:${FZF_DIR}/bin"
 fi
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "${ZDOTDIR}/fzf/shell/completion.zsh" 2> /dev/null
+[[ $- == *i* ]] && source "${FZF_DIR}/shell/completion.zsh" 2> /dev/null
 
 # Key bindings
 # ------------
-source "${ZDOTDIR}/fzf/shell/key-bindings.zsh"
+source "${FZF_DIR}/shell/key-bindings.zsh"
 
 export FZF_DEFAULT_COMMAND='(
     git ls-tree -r --name-only HEAD ||
