@@ -1,0 +1,40 @@
+# for archlinux
+if [[ `uname -r` =~ ARCH$ ]]; then
+    alias pkg-update='sudo etckeeper pre-install && sudo pacman -Syu && sudo etckeeper post-install'
+    # package management
+    alias pac="pacman"
+    alias spac="sudo pacman"
+    alias spacv="nitrogen --set-auto ~/Document/Pictures/black.jpg;sudo pacdiffviewer;nitrogen --restore"
+
+    # pacman update
+    alias pSyu="spac -Syu"         # pacman upgrade
+    alias pS="spac -S"             # pacman install
+    alias pU="spac -U"             # makepkg install
+    alias pSd="spac -S --asdeps"   # install as deps
+    # pacman search
+    alias pSl="pacman -Sl"         # list all packages of a repository
+    alias pQqm="pacman -Qqm"       # list all packages which were locally installed (e.g. AUR packages)
+    alias pQs="pac -Qs"            # query search
+    alias pQi="pac -Qi"            # query info
+    alias pSs="pac -Ss"            # sync search
+    alias pSi="pac -Si"            # sync info
+    # query listings
+    alias pQl="pac -Ql"            # list files
+    alias pQo="pac -Qo"            # check ownership
+    # aur update
+    alias ySya="sudo yaourt -Syua" # aur upgrade
+    alias yS="sudo yaourt -S"      # aur install
+    alias yU="sudo yaourt -U"      # aur update
+    # aur search
+    alias ySs="yaourt -Ss"         # aur search
+    alias ySi="yaourt -i"          # aur info
+    # remove pkgs
+    alias pRsn="spac -Rsn"         # clean 'n purge
+    alias pQqdt="pac -Qqdt"        # unrequired deps
+    alias pSc="pacman -Sc"         # clean cache - delete all not currently installed package files
+    ## AUR makepkg
+    alias mki="makepkg -csirf"
+    alias mkg="makepkg -g"
+    alias mks="makepkg --source -f"
+    alias pacm="makepkg -fci"      # '[m]ake' - make package from PKGBUILD file in current directory
+fi
