@@ -18,3 +18,7 @@
       # https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
 [include]
         path = ~/.private/private.gitconfig
+[merge]
+    ff = false
+[pull]
+    ff = only
